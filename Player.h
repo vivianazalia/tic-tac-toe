@@ -12,14 +12,17 @@ class Player {
 private:
 
     string name;
-    string symbol;
+    char symbol;
 
 public:
-
-    void setName(string n);
-    void setSymbol(string s);
-    string getName();
-    string getSymbol();
+    void setName(string n) {
+        name = n;
+    };
+    void setSymbol(char s) {
+        symbol = s;
+    };
+    string getName() { return name; };
+    char getSymbol() { return symbol; };
 
 };
 

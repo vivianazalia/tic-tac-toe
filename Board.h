@@ -1,5 +1,6 @@
 #pragma once
 #include<iostream>
+#include<stdlib.h>
 
 using namespace std;
 
@@ -9,7 +10,8 @@ private :
 	char grid[3][3] = { {'1','2','3'}, {'4','5','6'}, {'7','8','9'} };
 	int row, column;
 public:
-	void CreateBoard() {
+	void DisplayBoard() {
+		system("cls");
 		cout << "=========================================================" << endl;
 		cout << "                      TIC TAC TOE                        " << endl;
 		cout << "=========================================================" << endl;
@@ -45,6 +47,20 @@ public:
 		}
 
 		return grid[row][column];
+	}
+
+	void SetTile(int number, char c) {
+		row = number / 3;
+		if (number % 3 == 0)
+		{
+			row = row - 1;
+			column = 2;
+		}
+		else
+		{
+			column = number % 3 - 1;
+		}
+		grid[row][column] = c;
 	}
 };
 
