@@ -1,6 +1,7 @@
 #pragma once
 #include<stdlib.h>
 #include<time.h>
+#include<Windows.h>
 #include"Board.h"
 #include"SaveAndLoad.h"
 #include"Player.h"
@@ -166,11 +167,14 @@ public:
 		playerTurn = p;
 	}
 
-	void WinCondition(Player p) {
-		//set player yang menang
-		//cout << "\n============== " << playerTurn.getName() << " (" << playerTurn.getSymbol() << ") is Win! ==============" << endl;
+	void SetColor(unsigned short color) {
 
-		//setcolor(07);
+		HANDLE hCon = GetStdHandle(STD_OUTPUT_HANDLE);
+		SetConsoleTextAttribute(hCon, color);
+	}
+
+	void WinCondition(Player p) {
+		SetColor(07);
 		//stream untuk menulis file
 		ofstream myfile;
 
@@ -180,9 +184,9 @@ public:
 
 		cout << endl;
 		cout << "\n     ============== " << playerTurn.getName() << " (" << playerTurn.getSymbol() << ") is Win! ==============\n" << endl;
-		//cout << "\t\t*** History Saved ***" << endl;
-		//setcolor(12);
-		cout << "Score telah tersimpan. Tekan (2) untuk melihat history" << endl;
+
+		SetColor(12);
+		cout << "===> Data telah tersimpan. Tekan (2) untuk melihat history" << endl;
 		cout << "------------------------------------------------------" << endl;
 
 		//fail() -> untuk memeriksa suatu kesalahan pada operasi file
@@ -193,7 +197,6 @@ public:
 			myfile << "\n \t============== " << playerTurn.getName() << " (" << playerTurn.getSymbol() << ") is Win! ==============" << endl;
 			myfile.close(); //menutup file
 			cout << endl;
-			//cout << "Score telah tersimpan. Tekan (ENTER) untuk melihat history" << endl;
 		}
 
 		else {

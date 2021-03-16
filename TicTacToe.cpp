@@ -10,6 +10,7 @@ using namespace std;
 
 void ShowGame();
 void SetColor(unsigned short);
+
 int main() 
 {
 	History history;
@@ -20,6 +21,7 @@ int main()
 
 	while (gameOn != false) {
 
+		SetColor(07);
 		cout << endl;
 		cout << "=========================================================" << endl;
 		cout << "                      TIC TAC TOE                        " << endl;
@@ -53,6 +55,7 @@ int main()
 			gameOn = false;
 			break;
 		default:
+			SetColor(12);
 			cout << " Not a Valid Choice. \n";
 			cout << " Choose again.\n";
 			cin >> menu;
