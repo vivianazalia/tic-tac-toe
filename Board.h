@@ -9,6 +9,7 @@ class Board
 private : 
 	char grid[3][3] = { {'1','2','3'}, {'4','5','6'}, {'7','8','9'} };
 	int row, column;
+	bool isMatching = false;
 public:
 	void DisplayBoard() {
 		system("cls");
@@ -57,6 +58,31 @@ public:
 			column = number % 3 - 1;
 		}
 		grid[row][column] = c;
+	}
+
+	bool CheckMatch() {
+		if (GetTiles(1) == GetTiles(2) && GetTiles(1) == GetTiles(3) && GetTiles(2) == GetTiles(3) ||
+			GetTiles(4) == GetTiles(5) && GetTiles(4) == GetTiles(6) && GetTiles(5) == GetTiles(6) ||
+			GetTiles(7) == GetTiles(8) && GetTiles(7) == GetTiles(9) && GetTiles(8) == GetTiles(9))
+		{
+			isMatching = true;
+		}
+		else if (GetTiles(1) == GetTiles(4) && GetTiles(1) == GetTiles(7) && GetTiles(4) == GetTiles(7) ||
+			GetTiles(2) == GetTiles(5) && GetTiles(2) == GetTiles(8) && GetTiles(5) == GetTiles(8) ||
+			GetTiles(3) == GetTiles(6) && GetTiles(3) == GetTiles(9) && GetTiles(6) == GetTiles(9))
+		{
+			isMatching = true;
+		}
+		else if (GetTiles(1) == GetTiles(5) && GetTiles(1) == GetTiles(9) && GetTiles(5) == GetTiles(9) ||
+			GetTiles(3) == GetTiles(5) && GetTiles(3) == GetTiles(7) && GetTiles(5) == GetTiles(7))
+		{
+			isMatching = true;
+		}
+		else
+		{
+			isMatching = false;
+		}
+		return isMatching;
 	}
 };
 

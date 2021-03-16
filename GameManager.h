@@ -39,7 +39,7 @@ public:
 			SwitchTurn(player2);
 		}
 
-		CheckMatch();
+		isMatching = board.CheckMatch();
 	}
 
 	void CheckTileAvailable(int a) {
@@ -55,7 +55,7 @@ public:
 		}
 	}
 
-	void CheckMatch() {
+	/*void CheckMatch() {
 		if (board.GetTiles(1) == board.GetTiles(2) && board.GetTiles(1) == board.GetTiles(3) && board.GetTiles(2) == board.GetTiles(3) ||
 			board.GetTiles(4) == board.GetTiles(5) && board.GetTiles(4) == board.GetTiles(6) && board.GetTiles(5) == board.GetTiles(6) ||
 			board.GetTiles(7) == board.GetTiles(8) && board.GetTiles(7) == board.GetTiles(9) && board.GetTiles(8) == board.GetTiles(9))
@@ -77,15 +77,17 @@ public:
 		{
 			isMatching = false;
 		}
+	}*/
 
+	bool IsMatching() {
+		return isMatching;
+	}
+
+	void IsDrawn() {
 		if (n <= 1 && isMatching == false)
 		{
 			isDrawn = true;
 		}
-	}
-
-	bool IsMatching() {
-		return isMatching;
 	}
 
 	void SetData() {
@@ -101,7 +103,8 @@ public:
 	void Input() {
 		int inputNumber;
 
-		CheckMatch();
+		isMatching = board.CheckMatch();
+		IsDrawn();
 
 		if (isMatching == false)
 		{
@@ -165,7 +168,37 @@ public:
 
 	void WinCondition(Player p) {
 		//set player yang menang
-		cout << "\n============== " << playerTurn.getName() << " (" << playerTurn.getSymbol() << ") is Win! ==============" << endl;
+		//cout << "\n============== " << playerTurn.getName() << " (" << playerTurn.getSymbol() << ") is Win! ==============" << endl;
+
+		//setcolor(07);
+		//stream untuk menulis file
+		ofstream myfile;
+
+		//membuka file,
+		//jika file tidak ditemukan maka file akan otomatis dibuat
+		myfile.open("HistoryPlayer.txt", ios::app);
+
+		cout << endl;
+		cout << "\n     ============== " << playerTurn.getName() << " (" << playerTurn.getSymbol() << ") is Win! ==============\n" << endl;
+		//cout << "\t\t*** History Saved ***" << endl;
+		//setcolor(12);
+		cout << "Score telah tersimpan. Tekan (2) untuk melihat history" << endl;
+		cout << "------------------------------------------------------" << endl;
+
+		//fail() -> untuk memeriksa suatu kesalahan pada operasi file
+		if (!myfile.fail())
+		{
+			//menulis ke dalam file
+			//set player yang menang
+			myfile << "\n \t============== " << playerTurn.getName() << " (" << playerTurn.getSymbol() << ") is Win! ==============" << endl;
+			myfile.close(); //menutup file
+			cout << endl;
+			//cout << "Score telah tersimpan. Tekan (ENTER) untuk melihat history" << endl;
+		}
+
+		else {
+			cout << "File tidak ditemukan" << endl;
+		}
 	}
 
 	void SaveGame(string _filename) {

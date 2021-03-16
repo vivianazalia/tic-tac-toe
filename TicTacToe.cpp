@@ -2,14 +2,18 @@
 #include<string>
 #include<fstream>
 #include<conio.h>
+#include<Windows.h>
 #include"GameManager.h"
+#include"History.h"
 
 using namespace std;
 
 void ShowGame();
-
+void SetColor(unsigned short);
 int main() 
 {
+	History history;
+
 	int menu;
 
 	bool gameOn = true;
@@ -34,11 +38,13 @@ int main()
 		switch (menu)
 		{
 		case 1:
+			SetColor(03);
 			ShowGame();
 			// rest of code here
 			break;
 		case 2:
-			//showHistory();
+			SetColor(06);
+			history.ShowHistory();
 			// rest of code here
 			break;
 		case 3:
@@ -71,4 +77,9 @@ void ShowGame() {
 	//gm.SaveGame(filename + ".txt");
 	//cout << "Input File Name : "; cin >> filename;
 	//gm.LoadGame(filename + ".txt");
+}
+
+void SetColor(unsigned short color) {
+	HANDLE hCon = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(hCon, color);
 }
