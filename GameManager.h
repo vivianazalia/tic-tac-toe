@@ -10,7 +10,7 @@ class GameManager
 {
 private:
 	bool isMatching = false;
-	bool isDrawn = false;
+	bool isDraw = false;
 	bool isSet = false;
 	int n = 9;
 	string name1, name2;
@@ -56,38 +56,14 @@ public:
 		}
 	}
 
-	/*void CheckMatch() {
-		if (board.GetTiles(1) == board.GetTiles(2) && board.GetTiles(1) == board.GetTiles(3) && board.GetTiles(2) == board.GetTiles(3) ||
-			board.GetTiles(4) == board.GetTiles(5) && board.GetTiles(4) == board.GetTiles(6) && board.GetTiles(5) == board.GetTiles(6) ||
-			board.GetTiles(7) == board.GetTiles(8) && board.GetTiles(7) == board.GetTiles(9) && board.GetTiles(8) == board.GetTiles(9))
-		{
-			isMatching = true;
-		}
-		else if (board.GetTiles(1) == board.GetTiles(4) && board.GetTiles(1) == board.GetTiles(7) && board.GetTiles(4) == board.GetTiles(7) ||
-			board.GetTiles(2) == board.GetTiles(5) && board.GetTiles(2) == board.GetTiles(8) && board.GetTiles(5) == board.GetTiles(8) ||
-			board.GetTiles(3) == board.GetTiles(6) && board.GetTiles(3) == board.GetTiles(9) && board.GetTiles(6) == board.GetTiles(9))
-		{
-			isMatching = true;
-		}
-		else if (board.GetTiles(1) == board.GetTiles(5) && board.GetTiles(1) == board.GetTiles(9) && board.GetTiles(5) == board.GetTiles(9) ||
-			board.GetTiles(3) == board.GetTiles(5) && board.GetTiles(3) == board.GetTiles(7) && board.GetTiles(5) == board.GetTiles(7))
-		{
-			isMatching = true;
-		}
-		else
-		{
-			isMatching = false;
-		}
-	}*/
-
 	bool IsMatching() {
 		return isMatching;
 	}
 
-	void IsDrawn() {
+	void IsDraw() {
 		if (n <= 1 && isMatching == false)
 		{
-			isDrawn = true;
+			isDraw = true;
 		}
 	}
 
@@ -105,7 +81,7 @@ public:
 		int inputNumber;
 
 		isMatching = board.CheckMatch();
-		IsDrawn();
+		IsDraw();
 
 		if (isMatching == false)
 		{
@@ -156,7 +132,7 @@ public:
 			WinCondition(playerTurn);
 		}
 
-		if (isDrawn == true)
+		if (isDraw == true)
 		{
 			cout << "\n============== Game is Drawn! ==============" << endl;
 			isMatching = true;

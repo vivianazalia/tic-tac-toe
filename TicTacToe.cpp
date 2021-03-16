@@ -20,7 +20,6 @@ int main()
 	bool gameOn = true;
 
 	while (gameOn != false) {
-
 		SetColor(07);
 		cout << endl;
 		cout << "=========================================================" << endl;
@@ -45,6 +44,7 @@ int main()
 			// rest of code here
 			break;
 		case 2:
+			system("cls");
 			SetColor(06);
 			history.ShowHistory();
 			// rest of code here
