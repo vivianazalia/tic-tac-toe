@@ -48,6 +48,7 @@ int main()
 			// rest of code here
 			break;
 		case 3:
+			SetColor(12);
 			cout << "\n --- The game has ended !!! ---\n";
 			gameOn = false;
 			break;
