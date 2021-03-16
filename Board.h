@@ -15,10 +15,6 @@ public:
 		cout << "=========================================================" << endl;
 		cout << "                      TIC TAC TOE                        " << endl;
 		cout << "=========================================================" << endl;
-		cout << "                        made by : " << endl;
-		cout << "             4210191015 - Vivian Azalia A" << endl;
-		cout << "             4210191021 - Intan Putri K. W" << endl << endl;
-		cout << "               Praktikum Pemrograman 4" << endl;
 		cout << "\n\t\t___________________" << endl;
 		cout << "\t\t|     |     |     | " << endl;
 		cout << "\t\t|  " << grid[0][0] << "  |  " << grid[0][1] << "  |  " << grid[0][2] << "  |  " << endl;

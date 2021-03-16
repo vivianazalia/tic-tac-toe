@@ -1,11 +1,62 @@
 #include<iostream>
 #include<string>
+#include<fstream>
+#include<conio.h>
 #include"GameManager.h"
 
 using namespace std;
 
+void ShowGame();
+
 int main() 
 {
+	int menu;
+
+	bool gameOn = true;
+
+	while (gameOn != false) {
+
+		cout << endl;
+		cout << "=========================================================" << endl;
+		cout << "                      TIC TAC TOE                        " << endl;
+		cout << "=========================================================" << endl;
+		cout << "                        made by : " << endl;
+		cout << "             4210191015 - Vivian Azalia A" << endl;
+		cout << "             4210191021 - Intan Putri K. W" << endl << endl;
+		cout << "               Praktikum Pemrograman 4" << endl << endl;
+		cout << " 1) Start the game.\n";
+		cout << " 2) History.\n";
+		cout << " 3) Exit.\n\n";
+		cout << " Enter your choice and press return: ";
+
+		cin >> menu;
+
+		switch (menu)
+		{
+		case 1:
+			ShowGame();
+			// rest of code here
+			break;
+		case 2:
+			//showHistory();
+			// rest of code here
+			break;
+		case 3:
+			cout << "\n --- The game has ended !!! ---\n";
+			gameOn = false;
+			break;
+		default:
+			cout << " Not a Valid Choice. \n";
+			cout << " Choose again.\n";
+			cin >> menu;
+			break;
+		}
+
+	}
+	return 0;
+}
+
+void ShowGame() {
 	GameManager gm;
 	string filename;
 
@@ -15,11 +66,9 @@ int main()
 	{
 		gm.Input();
 	}
-	
+
 	//cout << "Input File Name : "; cin >> filename;
 	//gm.SaveGame(filename + ".txt");
 	//cout << "Input File Name : "; cin >> filename;
 	//gm.LoadGame(filename + ".txt");
-
-	return 0;
 }
