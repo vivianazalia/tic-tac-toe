@@ -1,9 +1,5 @@
 #pragma once
-#ifndef TicTacToe
-#define TicTacToe
-
-#include <array>
-#include <string>
+#include<iostream>
 
 using namespace std;
 
@@ -15,17 +11,10 @@ private:
     char symbol;
 
 public:
-    void setName(string n) {
-        name = n;
-    };
-    void setSymbol(char s) {
-        symbol = s;
-    };
-    string getName() { return name; };
-    char getSymbol() { return symbol; };
-
+    void setName(string);
+    void setSymbol(char);
+    string getName();
+    char getSymbol();
 };
-
-#endif // TicTacToe
 
 //4210191021 - Intan Putri K. W
