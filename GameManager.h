@@ -9,6 +9,7 @@ private:
 	bool isMatching;
 	bool isDraw;
 	bool isSet;
+	bool isQuit;
 	int n;
 	string name1, name2;
 	Player player1;
@@ -24,6 +25,8 @@ public:
 	bool IsMatching();
 
 	void IsDraw();
+
+	bool IsQuit(); 
 
 	void GameMode();
 

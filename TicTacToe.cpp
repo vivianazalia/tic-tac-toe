@@ -17,7 +17,6 @@ void SetColor(unsigned short);
 
 int main() 
 {
-	
 	History history;
 
 	int menu;
@@ -66,7 +65,6 @@ int main()
 			cin >> menu;
 			break;
 		}
-
 	}
 
 	system("pause");
@@ -74,17 +72,17 @@ int main()
 }
 
 void ShowGame() {
-	string filename;
-
 	gm.StartGame();
 
 	while (!gm.IsMatching())
 	{
 		gm.Input();
-	}
 
-	cout << "Input File Name : "; cin >> filename;
-	gm.SaveGame(filename + ".txt");
+		if (gm.IsQuit())
+		{
+			break;
+		}
+	}
 }
 
 void SetColor(unsigned short color) {

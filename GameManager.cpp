@@ -14,6 +14,7 @@ void GameManager::StartGame() {
 	isMatching = false;
 	isDraw = false;
 	isSet = false;
+	isQuit = false;
 	
 	board.ResetBoard();
 
@@ -46,6 +47,10 @@ void GameManager::IsDraw() {
 	{
 		isDraw = true;
 	}
+}
+
+bool GameManager::IsQuit() {
+	return isQuit;
 }
 
 void GameManager::GameMode() {
@@ -104,6 +109,8 @@ void GameManager::SetData() {
 
 void GameManager::Input() {
 	int inputNumber;
+	char inputQuit;
+	string filename;
 
 	isMatching = board.CheckMatch();
 	IsDraw();
@@ -125,6 +132,25 @@ void GameManager::Input() {
 		{
 			//cek tile kosong atau tidak
 			CheckTileAvailable(inputNumber);
+		}
+
+	quitGame:
+		cout << "\n--> Want to quit game? (y/n) : "; cin >> inputQuit;
+		if (inputQuit == 'Y' || inputQuit == 'y')
+		{
+			cout << "Enter filename for saving game : "; cin >> filename;
+			SaveGame(filename + ".txt");
+
+			isQuit = true;
+		}
+		else if (inputQuit == 'N' || inputQuit == 'n')
+		{
+			//next step
+		}
+		else
+		{
+			cout << "Input is invalid! Please try again." << endl;
+			goto quitGame;
 		}
 
 		//cek giliran player mana
@@ -161,6 +187,11 @@ void GameManager::Input() {
 	{
 		cout << "\n============== Game is Drawn! ==============" << endl;
 		isMatching = true;
+	}
+
+	if (isQuit)
+	{
+		cout << "\n============== Game has been saved! ==============" << endl;
 	}
 }
 
