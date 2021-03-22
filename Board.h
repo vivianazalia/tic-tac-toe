@@ -3,7 +3,8 @@
 class Board
 {
 private : 
-	char grid[3][3] = { {'1','2','3'}, {'4','5','6'}, {'7','8','9'} };
+	const static int INDEX = 3;
+	char grid[INDEX][INDEX];
 	int row, column;
 	bool isMatching = false;
 public:
@@ -14,6 +15,8 @@ public:
 	void SetTile(int, char);
 
 	bool CheckMatch();
+
+	void ResetBoard();
 };
 
 

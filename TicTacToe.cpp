@@ -8,11 +8,16 @@
 
 using namespace std;
 
+//Global variable
+GameManager gm;
+
+//Prototype Function
 void ShowGame();
 void SetColor(unsigned short);
 
 int main() 
 {
+	
 	History history;
 
 	int menu;
@@ -63,11 +68,12 @@ int main()
 		}
 
 	}
+
+	system("pause");
 	return 0;
 }
 
 void ShowGame() {
-	GameManager gm;
 	string filename;
 
 	gm.StartGame();
@@ -77,10 +83,8 @@ void ShowGame() {
 		gm.Input();
 	}
 
-	//cout << "Input File Name : "; cin >> filename;
-	//gm.SaveGame(filename + ".txt");
-	//cout << "Input File Name : "; cin >> filename;
-	//gm.LoadGame(filename + ".txt");
+	cout << "Input File Name : "; cin >> filename;
+	gm.SaveGame(filename + ".txt");
 }
 
 void SetColor(unsigned short color) {

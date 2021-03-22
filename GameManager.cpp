@@ -8,24 +8,18 @@
 #include"Player.h"
 
 void GameManager::StartGame() {
-	int firstTurn;
 	srand(time(0));
 
+	n = 9;
+	isMatching = false;
+	isDraw = false;
+	isSet = false;
+	
+	board.ResetBoard();
+
+	GameMode();
+
 	board.DisplayBoard();
-
-	//set input data player
-	SetData();
-
-	firstTurn = rand() % 2;
-
-	if (firstTurn == 0)
-	{
-		SwitchTurn(player1);
-	}
-	else
-	{
-		SwitchTurn(player2);
-	}
 
 	isMatching = board.CheckMatch();
 }
@@ -51,6 +45,50 @@ void GameManager::IsDraw() {
 	if (n <= 1 && isMatching == false)
 	{
 		isDraw = true;
+	}
+}
+
+void GameManager::GameMode() {
+	int input; 
+	string filename;
+
+	cout << "==== GAME MODE ====" << endl;
+	cout << "1. New Game" << endl;
+	cout << "2. Load Game" << endl;
+	input:
+	cout << "Enter number : "; cin >> input;
+
+	switch (input)
+	{
+	case 1:
+		NewGame();
+		break;
+	case 2:
+		cout << "Enter filename : "; cin >> filename;
+		LoadGame(filename + ".txt");
+		break;
+	default:
+		cout << "Invalid input! Please try again." << endl;
+		goto input;
+		break;
+	}
+}
+
+void GameManager::NewGame() {
+	int firstTurn;
+
+	//set input data player
+	SetData();
+
+	firstTurn = rand() % 2;
+
+	if (firstTurn == 0)
+	{
+		SwitchTurn(player1);
+	}
+	else
+	{
+		SwitchTurn(player2);
 	}
 }
 
@@ -173,14 +211,6 @@ void GameManager::SaveGame(string _filename) {
 
 void GameManager::LoadGame(string _filename) {
 	file.LoadGame(_filename, player1, player2, board);
-	cout << "player 1 name : " << player1.getName() << endl;
-	cout << "player 1 symbol : " << player1.getSymbol() << endl;
-	cout << "player 2 name : " << player2.getName() << endl;
-	cout << "player 2 symbol : " << player2.getSymbol() << endl;
-	//method untuk load data game dari file 
-	//cari file dengan nama sesuai yang diminta 
-	//buka file 
-	//pindahkan data dalam file ke variabel yang diminta 
 }
 
 

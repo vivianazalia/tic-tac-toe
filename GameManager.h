@@ -6,10 +6,10 @@
 class GameManager
 {
 private:
-	bool isMatching = false;
-	bool isDraw = false;
-	bool isSet = false;
-	int n = 9;
+	bool isMatching;
+	bool isDraw;
+	bool isSet;
+	int n;
 	string name1, name2;
 	Player player1;
 	Player player2;
@@ -24,6 +24,10 @@ public:
 	bool IsMatching();
 
 	void IsDraw();
+
+	void GameMode();
+
+	void NewGame();
 
 	void SetData();
 

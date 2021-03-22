@@ -151,6 +151,7 @@
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="History.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="SaveAndLoad.cpp" />
     <ClCompile Include="TicTacToe.cpp" />
   </ItemGroup>
   <ItemGroup>
